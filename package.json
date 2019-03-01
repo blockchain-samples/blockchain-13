@@ -1,0 +1,13 @@
+{
+  "name": "blockchain",
+  "version": "0.1.0",
+  "description": "",
+  "main": "build/startup.js",
+  "scripts": {
+	"start": "tsc && node ./build/startup.js",
+	"test": "jest",
+	"coverage": ".\\node_modules\\.bin\\jest --coverage"
+  },
+  "author": "Nefritox",
+  "license": "MIT"
+}
