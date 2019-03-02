@@ -6,6 +6,13 @@ export class Blockchain {
 	//#region Properties
 	public chain: Array<Block> = new Array<Block>();
 	public lastBlockIndex: number = 0;
+	public difficulty: number;
+	//#endregion
+
+	//#region Constructors
+	constructor(difficulty: number) {
+		this.difficulty = difficulty;
+	}
 	//#endregion
 
 	//#region Methods
@@ -25,6 +32,8 @@ export class Blockchain {
 	public addBlock(newBlock: Block): void {
 		newBlock.calculateHash();
 		newBlock.predecessorHash = this.latestBlock.hash;
+		newBlock.mineBlock(this.difficulty);
+
 		this.latestBlock.successorHash = newBlock.hash;
 		this.lastBlockIndex++;
 		this.chain.push(newBlock);

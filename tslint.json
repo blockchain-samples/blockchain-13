@@ -233,7 +233,6 @@
 		"align": [
 			true,
 			"parameters",
-			"arguments",
 			"statements",
 			"elements",
 			"members"
