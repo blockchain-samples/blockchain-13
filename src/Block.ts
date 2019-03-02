@@ -13,19 +13,20 @@ export class Block {
 	//#endregion
 
 	//#region Constructors
-	constructor(index: number, data: object) {
+	constructor(index: number, predecessorHash: string, data: object) {
 		this.index = index;
+		this.predecessorHash = predecessorHash;
 		this.data = data;
 
 		this.unixTimestamp = Date.now();
 
-		this.calculateHash();
+		this.hash = this.calculateHash();
 	}
 	//#endregion
 
 	//#region Methods
-	public calculateHash(): void {
-		this.hash = SHA512(this.index + this.predecessorHash + this.unixTimestamp + JSON.stringify(this.data)).toString();
+	public calculateHash(): string {
+		return SHA512(this.index + this.predecessorHash + this.unixTimestamp + JSON.stringify(this.data)).toString();
 	}
 	//#endregion
 }

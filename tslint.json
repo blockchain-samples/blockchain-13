@@ -113,8 +113,7 @@
 		"await-promise": true,
 		"ban-comma-operator": true,
 		"curly": [
-			true,
-			"as-needed"
+			true
 		],
 		"forin": true,
 		"function-constructor": true,

@@ -10,7 +10,12 @@ export class Blockchain {
 
 	//#region Methods
 	public generateGenesisBlock(): void {
-		this.chain.push(new Block(0, {"blockinfo": "This is genesis block."}));
+		this.chain.push(
+			new Block(
+				0,
+				"",
+				{ "blockinfo": "This is genesis block." }
+			));
 	}
 
 	public get latestBlock(): Block {
@@ -23,6 +28,28 @@ export class Blockchain {
 		this.latestBlock.successorHash = newBlock.hash;
 		this.lastBlockIndex++;
 		this.chain.push(newBlock);
+	}
+
+	public isChainValid(): boolean {
+		for (let i: number = 1; i < this.chain.length; i++) {
+			const previousBlock: Block = this.chain[i - 1];
+			const currentBlock: Block = this.chain[i];
+			const nextBlock: Block = this.chain[i + 1];
+
+			if (currentBlock.predecessorHash !== previousBlock.hash) {
+				return false;
+			}
+
+			if (currentBlock.hash !== currentBlock.calculateHash()) {
+				return false;
+			}
+
+			if (i !== this.chain.length - 1 && currentBlock.successorHash !== nextBlock.hash) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 	//#endregion
 }
