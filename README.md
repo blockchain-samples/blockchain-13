@@ -5,8 +5,8 @@ Simple blockchain implementation in TypeScript. For research purpose only. This 
 ## Getting Started
 
 ### Prerequisites
-* nodejs@v11.4.0 or higher 
-* typescript - v3.3.3333 or higher
+* nodejs@11.4.0 or higher 
+* typescript@3.3.3333 or higher
 
 ### How to run
 Install packages with:
